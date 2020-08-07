@@ -1,0 +1,45 @@
+<div class="header">
+    <h1 style="align-text:center"> COVID 19 TRACKER </h1>
+    
+
+<p>Last Updated:{{updatedtime}}</p>
+</div>
+<table style="width:100%">
+<tr><th>Total Active</th>
+    <th>
+        Total Confirmed
+    </th>
+    <th> Total Recovered</th>
+    <th>Total Death</th>
+</tr>
+<tr><td><p>{{totalactive}}</p></td>
+<td><p>{{totalconfirmed}}</p></td>
+<td><p>{{totalrecovered}}</p></td>
+<td><p>{{death}}</p></td>
+</tr>
+</table>
+<div style="width:100%">
+    <canvas id="canvas"></canvas>
+</div>
+<div>
+    <button mat-raised-button (click)="exportexcel()">EXPORT EXCEL</button>
+
+<table matTableExporter id="excel-table" >
+    <tr>
+        <th>STATE</th>
+        <th> TOTAL ACTIVE</th>
+        <th>TOTAL CONFIRMED</th>
+        <th>TOTAL RECOVERED</th>
+        <th>TOTAL DEATH</th>
+    </tr>
+    <div *ngFor="let case of listcases;let i=index" >
+    <tr>
+        
+        <td><b>{{case.state}}</b></td>
+        <td><b>{{case.active}}</b></td>
+        <td><b>{{case.confirmed}}</b></td>
+        <td><b>{{case.recovered}}</b></td>
+        <td><b>{{case.deaths}}</b></td>
+   </tr>
+</div>
+</table>
